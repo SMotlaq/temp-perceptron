@@ -21,7 +21,7 @@ class perceptron():
 
     def train(self, number_of_data, input_vectors, desired_outputs):
         eta = 5
-        E_max = 0.0001
+        E_max = 0.00001
         E = np.ones([np.shape(input_vectors)[0],1])
         while((E>E_max).any()):
             E = 0.0
@@ -45,9 +45,14 @@ myClassifier = perceptron(2, 2)
 x = np.array([[0,0],[0,1],[1,0],[1,1]])
 desired = np.array([[0,0],[0,1],[0,1],[1,1]])
 myClassifier.train(4, x, desired)
-print('==== TEST ====')
-new_input = np.array([[0,0],[0,1],[1,0],[1,1]])
-for i in range(4):
-    print(myClassifier.update(new_input[i]))
 
-print(myClassifier._weights)
+print('\n==== TEST ==== \n')
+new_input = np.array([[0,0],[0,1],[1,0],[1,1],[3,3],[-3,-3]])
+for i in range(6):
+    print(" For the point " + str(new_input[i]) + ":"
+        + "\n  -- AND result is: " + str(myClassifier.update(new_input[i])[0][0])
+        + "\n  -- OR  result is: " + str(myClassifier.update(new_input[i])[0][1])
+        + "\n")
+
+print('\n==== WEIGHTS ====')
+print(myClassifier._weights);
