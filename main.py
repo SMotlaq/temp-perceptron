@@ -20,8 +20,8 @@ class perceptron():
         return self._outputs
 
     def train(self, number_of_data, input_vectors, desired_outputs):
-        eta = 0.9
-        E_max = 0.001
+        eta = 5
+        E_max = 0.0001
         E = np.ones([np.shape(input_vectors)[0],1])
         while((E>E_max).any()):
             E = 0.0
